@@ -77,7 +77,12 @@ if ( have_posts() ) : ?>
 				<div class="col-md-12">
 					<div class="gallery-carousel-wrapper">
 						<div class="gallery-carousel">
-							<?php foreach($fields['section_gallery']['gallery'] as $item): ?>
+							<?php 
+							// Shuffle gallery items for random display
+							$gallery_items = $fields['section_gallery']['gallery'];
+							shuffle($gallery_items);
+							foreach($gallery_items as $item): 
+							?>
 								<div class="gallery-slide">
 									<a href="<?php echo $item['url']; ?>" class="gallery-item">
 										<img src="<?php echo $item['url']; ?>" alt="<?php echo $item['alt'] ? $item['alt'] : 'Gallery Image'; ?>">
