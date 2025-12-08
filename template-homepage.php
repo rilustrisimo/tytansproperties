@@ -80,6 +80,9 @@ if ( have_posts() ) : ?>
 							<?php foreach($fields['section_gallery']['gallery'] as $item): ?>
 								<div class="gallery-slide">
 									<img src="<?php echo $item['url']; ?>" alt="<?php echo $item['alt'] ? $item['alt'] : 'Gallery Image'; ?>">
+									<div class="gallery-overlay">
+										<i class="fa-solid fa-search-plus"></i>
+									</div>
 								</div>
 							<?php endforeach; ?>
 						</div>

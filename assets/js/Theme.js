@@ -75,21 +75,30 @@ var Theme = {
             $('.gallery-carousel').slick({
                 centerMode: true,
                 centerPadding: '0',
-                slidesToShow: 3,
+                slidesToShow: 5,
                 slidesToScroll: 1,
                 infinite: true,
                 arrows: true,
                 dots: false,
                 focusOnSelect: true,
                 autoplay: false,
-                speed: 500,
+                speed: 600,
+                cssEase: 'cubic-bezier(0.4, 0, 0.2, 1)',
                 responsive: [
+                    {
+                        breakpoint: 1400,
+                        settings: {
+                            slidesToShow: 3,
+                            centerMode: true,
+                            centerPadding: '0'
+                        }
+                    },
                     {
                         breakpoint: 992,
                         settings: {
                             slidesToShow: 1,
                             centerMode: true,
-                            centerPadding: '60px'
+                            centerPadding: '80px'
                         }
                     },
                     {
@@ -97,7 +106,7 @@ var Theme = {
                         settings: {
                             slidesToShow: 1,
                             centerMode: true,
-                            centerPadding: '40px'
+                            centerPadding: '60px'
                         }
                     },
                     {
@@ -110,7 +119,49 @@ var Theme = {
                     }
                 ]
             });
+
+            // Initialize lightbox for gallery images
+            this.initGalleryLightbox($);
         }
+    },
+
+    initGalleryLightbox: function($){
+        var self = this;
+        
+        $('.gallery-slide').magnificPopup({
+            delegate: 'img',
+            type: 'image',
+            closeOnContentClick: true,
+            closeBtnInside: false,
+            mainClass: 'mfp-with-zoom',
+            image: {
+                verticalFit: true,
+                titleSrc: function(item) {
+                    return item.el.attr('alt');
+                }
+            },
+            gallery: {
+                enabled: true,
+                navigateByImgClick: true,
+                preload: [0, 1],
+                tPrev: 'Previous',
+                tNext: 'Next',
+                tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
+            },
+            zoom: {
+                enabled: true,
+                duration: 300,
+                easing: 'ease-in-out',
+                opener: function(element) {
+                    return element.find('img');
+                }
+            },
+            callbacks: {
+                elementParse: function(item) {
+                    item.src = item.el.attr('src');
+                }
+            }
+        });
     },
 
     initFooterYear: function($){
