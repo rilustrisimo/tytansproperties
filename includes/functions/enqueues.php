@@ -57,10 +57,10 @@ if ( ! function_exists( 'qed_init_theme_assets' ) ) {
 			wp_enqueue_script( 'waypoints', PARENT_URL . '/assets/jslib/jquery.waypoints.min.js', array( 'jquery' ), '4.0.1', true );
 			wp_enqueue_script( 'counterup', PARENT_URL . '/assets/jslib/jquery.counterup.min.js', array( 'jquery', 'waypoints' ), '1.0', true );
 			wp_enqueue_script( 'vivus', PARENT_URL . '/assets/jslib/vivus.min.js', array(), '0.4.2', true );
-			wp_register_script( 'fitvid', PARENT_URL . '/assets/jslib/bxslider/vendor/jquery.fitvids.js', array( 'jquery' ), '1.0', true );
-			wp_enqueue_style( 'magnific-popup', PARENT_URL . '/assets/csslib/magnific-popup.css', array(), '1.1.0' );
-			wp_enqueue_script( 'magnific-popup', PARENT_URL . '/assets/jslib/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );
-			wp_register_script( 'theme', PARENT_URL . '/assets/js/Theme.js', array( 'jquery' ), rand(), true );
+		wp_register_script( 'fitvid', PARENT_URL . '/assets/jslib/bxslider/vendor/jquery.fitvids.js', array( 'jquery' ), '1.0', true );
+		wp_enqueue_style( 'magnific-popup', PARENT_URL . '/assets/csslib/magnific-popup.css', array(), '1.1.0' );
+		wp_enqueue_script( 'magnific-popup', PARENT_URL . '/assets/jslib/jquery.magnific-popup.min.js', array( 'jquery' ), '1.1.0', true );
+		wp_register_script( 'theme', PARENT_URL . '/assets/js/Theme.js', array( 'jquery', 'slick', 'magnific-popup' ), rand(), true );
 			wp_localize_script( 'theme', 'AjaxHelper', array(
 					'ajaxurl' => admin_url( 'admin-ajax.php' ),
 					'headerSectionNonce' => wp_create_nonce( 'swish-header-section-nonce' ),

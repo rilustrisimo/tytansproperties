@@ -128,37 +128,64 @@ var Theme = {
     initGalleryLightbox: function($){
         var self = this;
         
-        $('.gallery-slide').magnificPopup({
-            delegate: 'img',
+        // Initialize Magnific Popup on gallery carousel
+        $('.gallery-carousel').magnificPopup({
+            delegate: 'a.gallery-item',
             type: 'image',
-            closeOnContentClick: true,
+            closeOnContentClick: false,
             closeBtnInside: false,
-            mainClass: 'mfp-with-zoom',
+            fixedContentPos: true,
+            mainClass: 'mfp-zoom-in mfp-img-mobile',
+            removalDelay: 300,
             image: {
                 verticalFit: true,
                 titleSrc: function(item) {
-                    return item.el.attr('alt');
-                }
+                    return item.el.find('img').attr('alt');
+                },
+                markup: '<div class="mfp-figure">'+
+                          '<div class="mfp-close"></div>'+
+                          '<div class="mfp-img"></div>'+
+                          '<div class="mfp-bottom-bar">'+
+                            '<div class="mfp-title"></div>'+
+                            '<div class="mfp-counter"></div>'+
+                          '</div>'+
+                        '</div>'
             },
             gallery: {
                 enabled: true,
                 navigateByImgClick: true,
-                preload: [0, 1],
+                preload: [0, 2],
                 tPrev: 'Previous',
                 tNext: 'Next',
-                tCounter: '<span class="mfp-counter">%curr% of %total%</span>'
+                tCounter: '%curr% / %total%',
+                arrowMarkup: '<button title="%title%" type="button" class="mfp-arrow mfp-arrow-%dir%"></button>'
             },
             zoom: {
                 enabled: true,
                 duration: 300,
-                easing: 'ease-in-out',
-                opener: function(element) {
-                    return element.find('img');
-                }
+                easing: 'ease-in-out'
             },
             callbacks: {
-                elementParse: function(item) {
-                    item.src = item.el.attr('src');
+                beforeOpen: function() {
+                    // Add smooth fade class
+                    this.st.image.markup = this.st.image.markup.replace('mfp-figure', 'mfp-figure mfp-with-anim');
+                    
+                    // Prevent slick slider from navigating when clicking
+                    if ($('.gallery-carousel').hasClass('slick-initialized')) {
+                        $('.gallery-carousel').slick('slickPause');
+                    }
+                },
+                imageLoadComplete: function() {
+                    var self = this;
+                    setTimeout(function() {
+                        self.content.addClass('mfp-with-anim');
+                    }, 16);
+                },
+                close: function() {
+                    // Resume slider after closing lightbox
+                    if ($('.gallery-carousel').hasClass('slick-initialized')) {
+                        $('.gallery-carousel').slick('slickPlay');
+                    }
                 }
             }
         });

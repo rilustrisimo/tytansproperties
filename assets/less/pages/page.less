@@ -314,12 +314,19 @@
 
             .gallery-slide {
                 outline: none;
-                cursor: pointer;
                 position: relative;
                 overflow: hidden;
                 border-radius: 12px;
                 box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
                 transition: all 0.3s ease;
+
+                a.gallery-item {
+                    display: block;
+                    position: relative;
+                    overflow: hidden;
+                    text-decoration: none;
+                    cursor: pointer;
+                }
 
                 &:hover {
                     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
@@ -1406,4 +1413,251 @@ body:not(.home) {
 /* Tablets */
 @media only screen and (min-width: 481px) and (max-width: 1024px) {
 
+}
+
+/* Magnific Popup Custom Styles for Gallery - Modern & Clean */
+.mfp-bg {
+    background: rgba(0, 0, 0, 0.92);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.mfp-with-zoom {
+    .mfp-container,
+    &.mfp-bg {
+        opacity: 0;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    &.mfp-ready {
+        .mfp-container {
+            opacity: 1;
+        }
+        &.mfp-bg {
+            opacity: 1;
+        }
+    }
+
+    &.mfp-removing {
+        .mfp-container,
+        &.mfp-bg {
+            opacity: 0;
+            transition: all 0.3s ease-in;
+        }
+    }
+}
+
+// Image container
+.mfp-img-mobile .mfp-image-holder {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.mfp-img-mobile img.mfp-img {
+    padding: 0;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+}
+
+.mfp-figure {
+    &:after {
+        box-shadow: none;
+    }
+}
+
+// Counter styling
+.mfp-counter {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    color: #fff;
+    font-size: 15px;
+    font-family: @poppins;
+    font-weight: 500;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 8px 16px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+// Close button
+.mfp-close {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    opacity: 1;
+    color: #fff;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.2);
+        transform: rotate(90deg);
+    }
+
+    &:active {
+        top: 25px;
+    }
+}
+
+// Navigation arrows
+.mfp-arrow {
+    opacity: 1;
+    transition: all 0.3s ease;
+    
+    &:before,
+    &:after {
+        border: none;
+        content: '';
+    }
+
+    &:before {
+        font-family: 'Font Awesome 6 Free';
+        font-weight: 900;
+        font-size: 24px;
+        color: #fff;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        transition: all 0.3s ease;
+    }
+
+    &:hover:before {
+        background: rgba(255, 255, 255, 0.2);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    &:active {
+        margin-top: 0;
+    }
+}
+
+.mfp-arrow-left {
+    left: 25px;
+
+    &:before {
+        content: '\f053';
+        left: 0;
+    }
+}
+
+.mfp-arrow-right {
+    right: 25px;
+
+    &:before {
+        content: '\f054';
+        right: 0;
+    }
+}
+
+// Title/caption
+.mfp-title {
+    color: #fff;
+    font-family: @poppins;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 20px 40px;
+    text-align: center;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.6), transparent);
+}
+
+// Preloader
+.mfp-preloader {
+    color: #fff;
+    font-size: 14px;
+    font-family: @poppins;
+}
+
+// Mobile responsive
+@media screen and (max-width: 768px) {
+    .mfp-counter {
+        top: 15px;
+        right: 15px;
+        font-size: 13px;
+        padding: 6px 12px;
+    }
+
+    .mfp-close {
+        top: 15px;
+        right: 15px;
+        width: 44px;
+        height: 44px;
+        font-size: 28px;
+        line-height: 44px;
+    }
+
+    .mfp-arrow {
+        &:before {
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            font-size: 20px;
+        }
+    }
+
+    .mfp-arrow-left {
+        left: 15px;
+    }
+
+    .mfp-arrow-right {
+        right: 15px;
+    }
+
+    .mfp-img-mobile .mfp-image-holder {
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .mfp-img-mobile img.mfp-img {
+        border-radius: 4px;
+    }
+}
+
+// Smooth zoom animation
+.mfp-zoom-in {
+    .mfp-with-anim {
+        opacity: 0;
+        transition: all 0.3s ease-in-out;
+        transform: scale(0.8);
+    }
+
+    &.mfp-ready .mfp-with-anim {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    &.mfp-removing .mfp-with-anim {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+
+    &.mfp-bg {
+        opacity: 0;
+        transition: opacity 0.3s ease-out;
+    }
+
+    &.mfp-ready.mfp-bg {
+        opacity: 1;
+    }
+
+    &.mfp-removing.mfp-bg {
+        opacity: 0;
+    }
 }
