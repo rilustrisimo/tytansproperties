@@ -73,12 +73,18 @@ if ( have_posts() ) : ?>
 					<p><?php echo $fields['section_gallery']['description']; ?></p>
 				</div>
 			</div>
-			<div class="row items">
-				<?php foreach($fields['section_gallery']['gallery'] as $item): ?>
-					<div class="col-md-4 item">
-						<img src="<?php echo $item['url']; ?>">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="gallery-carousel-wrapper">
+						<div class="gallery-carousel">
+							<?php foreach($fields['section_gallery']['gallery'] as $item): ?>
+								<div class="gallery-slide">
+									<img src="<?php echo $item['url']; ?>" alt="<?php echo $item['alt'] ? $item['alt'] : 'Gallery Image'; ?>">
+								</div>
+							<?php endforeach; ?>
+						</div>
 					</div>
-				<?php endforeach; ?>
+				</div>
 			</div>
 		</div>
 		<!-- section gallery end -->

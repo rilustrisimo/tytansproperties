@@ -70,6 +70,47 @@ var Theme = {
                 });
             });
         }
+
+        if($('.gallery-carousel').length > 0){
+            $('.gallery-carousel').slick({
+                centerMode: true,
+                centerPadding: '0',
+                slidesToShow: 3,
+                slidesToScroll: 1,
+                infinite: true,
+                arrows: true,
+                dots: false,
+                focusOnSelect: true,
+                autoplay: false,
+                speed: 500,
+                responsive: [
+                    {
+                        breakpoint: 992,
+                        settings: {
+                            slidesToShow: 1,
+                            centerMode: true,
+                            centerPadding: '60px'
+                        }
+                    },
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            centerMode: true,
+                            centerPadding: '40px'
+                        }
+                    },
+                    {
+                        breakpoint: 480,
+                        settings: {
+                            slidesToShow: 1,
+                            centerMode: false,
+                            centerPadding: '0'
+                        }
+                    }
+                ]
+            });
+        }
     },
 
     initFooterYear: function($){
