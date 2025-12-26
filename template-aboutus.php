@@ -26,6 +26,7 @@ if ( have_posts() ) : ?>
 					<?php the_content(); ?>
 				</div>
 			</div>
+			<!--
 			<div class="row items">
 				<?php foreach($fields['personnel_items'] as $item): ?>
 					<div class="col-md-3 text-center item">
@@ -37,6 +38,7 @@ if ( have_posts() ) : ?>
 					</div>
 				<?php endforeach; ?>
 			</div>
+				-->
 		</div>
 
 	<?php } ?>
